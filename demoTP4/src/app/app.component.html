@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav d-flex justify-content-center w-100">
+    <button *ngFor="let action of actions" 
+            class="btn nav-item nav-link mx-2" 
+            [class.active]="currentAction === action" 
+            (click)="setCurrentAction(action)" 
+            [routerLink]="action.link">
+      <i class="bi bi-{{action.icon}}"></i> {{action.name}}
+    </button>
+  </div>
+</nav>
+
+
+<router-outlet>
+
+</router-outlet>

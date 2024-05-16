@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header">
+        Products
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" [(ngModel)]="appState.productsState.keyword" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-icon">
+        <button  (click)="searchProducts()" class="btn btn-outline-success" type="button" id="search-icon">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of appState.productsState.products">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <!-- <button class="btn btn-primary" (click)="handleEdit(product)">
+                            <i class="bi bi-pencil"></i>
+                        </button> -->
+                        <button class="btn btn-danger" (click)="handleDelete(product)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul class="nav nav-pills">
+            <li *ngFor="let page of [].constructor(this.appState.productsState.totalPages); let i=index">
+              <button (click)="handleGotoPage(i+1)"
+                      [ngClass]="this.appState.productsState.currentPage==(i+1)?'btn-success '
+                      :'btn-outline-success'"
+                      class="btn m-1"
+                      >
+                {{(i+1)}}
+              </button>
+            </li>
+          </ul>
+    </div>
+</div>
